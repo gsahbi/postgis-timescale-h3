@@ -1,10 +1,7 @@
-### Version 1.2.1
-#FROM timescale/timescaledb-postgis:latest-pg11
 
-### Version 1.4.1
-FROM timescale/timescaledb-postgis:1.4.1-pg11
+FROM timescale/timescaledb-postgis:latest-pg12
 
-MAINTAINER sign0 <asignori@student.42.fr>
+MAINTAINER sahbi <sahbi.g@gmail.com>
 
 RUN apk add --update \
     git \

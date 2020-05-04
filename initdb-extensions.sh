@@ -5,12 +5,6 @@
 
 ### OTHERS :
 
-# Load uuid-ossp (UUIDV4)
-(
-    echo "Loading uuid-ossp (UUIDV4) extension"
-    psql -U $POSTGRES_USER -c 'CREATE EXTENSION IF NOT EXISTS "uuid-ossp" CASCADE;'
-)
-
 # Load hstore
 (
     echo "Loading hstore extension"

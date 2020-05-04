@@ -5,13 +5,13 @@ services:
   postgis:
     container_name: postgis
     build: ./
-    image: sign0/postgis-timescale-h3
+    image: postgre /postgis-timescale-h3
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgis}
       PGDATA: /data/postgres
     volumes:
-      - ./data/postgres:/data/postgres
+      - /src/postgres:/data/postgres
       - ./initdb-extensions.sh:/docker-entrypoint-initdb.d/extensions.sh
     ports:
       - "15432:5432"
@@ -28,26 +28,12 @@ services:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin@localhost}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-pgAdmin4}
     volumes:
-       - ./data/pgadmin:/root/.pgadmin
+       - /srv/pgadmin:/root/.pgadmin
     ports:
       - "${PGADMIN_PORT:-8500}:80"
     networks:
       - postgres
     restart: unless-stopped
-  
-  grafana:
-    image: grafana/grafana:6.1.6
-    container_name: grafana
-    depends_on:
-      - postgis
-    ports:
-      - "8600:3000"
-    environment:
-      - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-worldmap-panel,neocat-cal-heatmap-panel,petrslavotinek-carpetplot-panel,mtanda-heatmap-epoch-panel, natel-usgs-datasource, snuids-radar-panel, natel-plotly-panel, briangann-datatable-panel
-    volumes:
-      - grafana:/var/lib/grafana     
-    networks:
-      - postgres
 
 networks:
   postgres:

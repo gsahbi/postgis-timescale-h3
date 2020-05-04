@@ -1,6 +1,6 @@
 # postgis-timescale-h3
 
-Dockerized PostgreSQL v11 / PostGIS v2.5 / TimescaleDB v1.4 / Uber H3 (+ PGAdmin 4 + Grafana in docker-compose)
+Dockerized PostgreSQL v12 / PostGIS v2.5 / TimescaleDB v1.4 / Uber H3 (+ PGAdmin 4 + Grafana in docker-compose)
 
 ### exposed ports
 - :15432 = Postgresql database (internal-hostname:postgis db:postgres user:postgres password:postgis)
