@@ -5,13 +5,13 @@ services:
   postgis:
     container_name: postgis
     build: ./
-    image: postgre /postgis-timescale-h3
+    image: sahbi/postgis-timescale-h3
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgis}
       PGDATA: /data/postgres
     volumes:
-      - /src/postgres:/data/postgres
+      - /srv/postgres:/data/postgres
       - ./initdb-extensions.sh:/docker-entrypoint-initdb.d/extensions.sh
     ports:
       - "15432:5432"
